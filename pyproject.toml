@@ -1,0 +1,28 @@
+# ЛР8: управление зависимостями через Poetry (формат PEP 621 — актуален для Poetry 2.x).
+# Проверка файла: poetry check; установка всех зависимостей: poetry install
+[project]
+name = "lab8"
+version = "0.1.0"
+description = "Кузьмичев Никита Сергеевич, группа 221141, вариант 7. Лабораторная работа №8: экосистема Python (logging, property, pytest, asyncio, TDD)"
+authors = [{ name = "Кузьмичев Никита Сергеевич", email = "student@example.com" }]
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi (>=0.165.0,<0.166)",
+    "uvicorn[standard] (>=0.54.0,<0.55)",
+    "httpx (>=0.28.1,<0.29)",
+]
+
+[tool.poetry]
+package-mode = false  # это проект-приложение, а не устанавливаемая библиотека
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^9.2.0"
+
+# pytest при запуске из корня проекта собирает только папки с тестами
+[tool.pytest.ini_options]
+testpaths = ["task3_pytest", "task5_tdd_api"]
+
+[build-system]
+requires = ["poetry-core>=2.0"]
+build-backend = "poetry.core.masonry.api"
